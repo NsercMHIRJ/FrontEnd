@@ -3,6 +3,9 @@ import MUIDataTable from "mui-datatables";
 import Grid from '@material-ui/core/Grid';
 import {DateConverter} from '../../../Helper/Helper';
 import "../../../../scss/_main.scss";
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
+import CorrelationAnalysisTable from '../../../Correlation/CorrelationAnalysisScreen/CorrelationAnalysisTable';
 
 const DailyReport = (props) => {
   const [rowsSelectedState, setRowsSelected] = useState([]);
@@ -256,6 +259,21 @@ const DailyReport = (props) => {
       resizableColumns: false,
       selectableRowsHideCheckboxes: true,
       selectableRowsOnClick: false,
+      expandableRows: true,
+      renderExpandableRow: (rowData, rowMeta) => {
+        return (    
+        <TableRow>
+          <TableCell colSpan={rowData.length+1}>
+            <CorrelationAnalysisTable
+              dateFrom = {rowData[1]} 
+              dateTo = {rowData[1]}
+              tail = {rowData[0]}
+              EqID = {rowData[7]}
+            />
+            </TableCell>
+        </TableRow>
+        );
+      },
       rowsSelected: rowsSelectedState,
       onRowSelectionChange: HandleSingleRowSelect,
       downloadOptions: {

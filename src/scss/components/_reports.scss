@@ -52,3 +52,22 @@
   }
 }
 
+.reports-root {
+  .MuiButtonBase-root {
+    margin-left: 0px !important;
+  }
+}
+.MuiTableBody-root {
+  .MuiTableCell-root {
+    div {
+    //  max-height: 150px;
+      display: block;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      max-width: 150px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

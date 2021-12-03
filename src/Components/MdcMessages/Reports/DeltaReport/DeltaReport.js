@@ -2,168 +2,217 @@ import React, {useState} from 'react';
 import MUIDataTable from "mui-datatables";
 import Grid from '@material-ui/core/Grid';
 import "../../../../scss/_main.scss";
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
+import CorrelationAnalysisTable from '../../../Correlation/CorrelationAnalysisScreen/CorrelationAnalysisTable';
+
 
 const DeltaReport = (props) => {
   const [rowsSelectedState, setRowsSelected] = useState([]);
+  const [deltaParameters, setDeltaParameters] = useState(JSON.parse(localStorage.getItem('delta-report')));
 
   const HandleMultipleRowSelect = (rowsSelectedData, allRows, rowsSelected) => {
     setRowsSelected(rowsSelected);
   };
 
+  const headingStyle = {
+    maxWidth:'200px',
+    minWidth:'50px',
+    padding:'5px',
+    textAlign:"center",
+    margin: '0px',
+    whiteSpace: 'normal',
+  }
+
+  const columnStyle = {
+    maxWidth:'150px',
+    // minWidth:'100px',
+    padding:'13px',
+    textAlign:"left",
+    margin: '0px',
+    // overflowY: 'scroll',
+    // maxHeight: '100px',
+  }
+
   const columns = [
     {
       name: 'tail', 
-      label: 'Tail #',
+      label: 'Tail#',
       options: {
-       filter: true,
-       filterType: 'dropdown',
-       sort: true,
-       setCellProps: () => ({style: {minWidth:'100px'}}),
+        filter: true,
+        filterType: 'dropdown',
+        sort: true,
+        setCellProps: () => ({style: columnStyle}),
+        setCellHeaderProps: () => ({ style: headingStyle }),
       }
     },
     {
       name: 'ACSN', 
       label: 'ACSN',
       options: {
-       filter: true,
-       filterType: 'dropdown',
-       sort: true,
+        filter: true,
+        filterType: 'dropdown',
+        sort: true,
+        setCellProps: () => ({style: columnStyle}),
+        setCellHeaderProps: () => ({ style: headingStyle }),
       }
     },
     {
       name: 'EICASMessages', 
       label: 'EICAS Related',
       options: {
-       filter: true,
-       filterType: 'dropdown',
-       sort: true,
-       setCellProps: () => ({style: {minWidth:'150px'}}),
+        filter: true,
+        filterType: 'dropdown',
+        sort: true,
+        setCellProps: () => ({style: columnStyle}),
+        setCellHeaderProps: () => ({ style: headingStyle }),
       }
     },
     {
       name: 'mdcMessages', 
       label: 'MDC Messages',
       options: {
-       filter: true,
-       filterType: 'dropdown',
-       sort: true,
-       setCellProps: () => ({style: {minWidth:'300px'}}),
+        filter: true,
+        filterType: 'dropdown',
+        sort: true,
+        setCellProps: () => ({style: columnStyle}),
+        setCellHeaderProps: () => ({ style: headingStyle }),
       }
     },
     {
       name: 'LRU', 
       label: 'LRU',
       options: {
-       filter: true,
-       filterType: 'dropdown',
-       sort: true,
-       setCellProps: () => ({style: {minWidth:'150px'}}),
+        filter: true,
+        filterType: 'dropdown',
+        sort: true,
+        setCellProps: () => ({style: columnStyle}),
+        setCellHeaderProps: () => ({ style: headingStyle }),
       }
     },
     {
       name: 'ATA', 
       label: 'ATA',
       options: {
-       filter: true,
-       filterType: 'dropdown',
-       sort: true,
-       setCellProps: () => ({style: {whiteSpace:'nowrap'}})
+        filter: true,
+        filterType: 'dropdown',
+        sort: true,
+        setCellProps: () => ({style: columnStyle}),
+        setCellHeaderProps: () => ({ style: headingStyle }),
       }
     },
     {
       name: 'B1Equation', 
       label: 'B1 Equation',
       options: {
-       filter: true,
-       filterType: 'dropdown',
-       sort: true,
-       setCellProps: () => ({style: {minWidth:'150px'}}),
+        filter: true,
+        filterType: 'dropdown',
+        sort: true,
+        setCellProps: () => ({style: columnStyle}),
+        setCellHeaderProps: () => ({ style: headingStyle }),
       }
     },
     {
       name: 'type', 
       label: 'Type',
       options: {
-       filter: true,
-       filterType: 'dropdown',
-       sort: true,
-       setCellProps: () => ({style: {minWidth:'150px'}}),
+        filter: true,
+        filterType: 'dropdown',
+        sort: true,
+        setCellProps: () => ({style: columnStyle}),
+        setCellHeaderProps: () => ({ style: headingStyle }),
       }
     },
     {
       name: 'equationDescription', 
       label: 'Equation Description',
       options: {
-       filter: false,
-       filterType: 'dropdown',
-       sort: true,
-       setCellProps: () => ({style: {minWidth:'250px'}}),
+        filter: false,
+        filterType: 'dropdown',
+        sort: true,
+        setCellProps: () => ({style: columnStyle}),
+        setCellHeaderProps: () => ({ style: headingStyle }),
       }
      },
      {
       name: 'totalOccurences', 
-      label: 'Total Occurences',
+      label: 'Occ',
       options: {
-       filter: false,
-       filterType: 'dropdown',
-       sort: true,
+        filter: false,
+        filterType: 'dropdown',
+        sort: true,
+        secondaryLabel: 'Total Occurences',
+        setCellProps: () => ({style: columnStyle}),
+        setCellHeaderProps: () => ({ style: headingStyle }),
       }
      },
      {
       name: 'consecutiveDays', 
-      label: 'Consecutive Days',
+      label: 'Cons. Days',
       options: {
-       filter: false,
-       filterType: 'dropdown',
-       sort: true,
+        filter: false,
+        filterType: 'dropdown',
+        sort: true,
+        secondaryLabel: 'Consecutive Days',
+        setCellProps: () => ({style: columnStyle}),
+        setCellHeaderProps: () => ({ style: headingStyle }),
       }
      },
      {
       name: 'ConsecutiveFlights', 
-      label: 'Consecutive Flights',
+      label: 'Cons. Legs', 
       options: {
-       filter: false,
-       filterType: 'dropdown',
-       sort: true,
+        filter: false,
+        filterType: 'dropdown',
+        sort: true,
+        secondaryLabel: 'Consecutive Flight Legs',
+        setCellProps: () => ({style: columnStyle}),
+        setCellHeaderProps: () => ({ style: headingStyle }),
       }
      },
      {
       name: 'intermittent', 
-      label: 'Intermittent',
+      label: 'Int.', 
       options: {
-       filter: false,
-       filterType: 'dropdown',
-       sort: true,
+        filter: false,
+        filterType: 'dropdown',
+        sort: true,
+        secondaryLabel: 'Intermittency',
+        setCellProps: () => ({style: columnStyle}),
+        setCellHeaderProps: () => ({ style: headingStyle }),
       }
      },
      {
       name: 'dateFrom', 
       label: 'Date From',
       options: {
-       filter: true,
-       filterType: 'dropdown',
-       sort: true,
-       setCellProps: () => ({style: {minWidth:'120px'}}),
+        filter: true,
+        filterType: 'dropdown',
+        sort: true,
+        setCellProps: () => ({style: columnStyle}),
+        setCellHeaderProps: () => ({ style: headingStyle }),
       }
      },
      {
       name: 'dateTo', 
       label: 'Date To',
       options: {
-       filter: true,
-       filterType: 'dropdown',
-       sort: true,
-       setCellProps: () => ({style: {minWidth:'120px'}}),
+        filter: true,
+        filterType: 'dropdown',
+        sort: true,
+        setCellProps: () => ({style: columnStyle}),
+        setCellHeaderProps: () => ({ style: headingStyle }),
       }
      },
      {
       name: 'reasons', 
       label: 'Reasons For Flag',
       options: {
-       filter: false,
-       filterType: 'dropdown',
-       sort: true,
-       setCellProps: () => ({style: {minWidth:'250px'}}),
+        filter: false,
+        filterType: 'dropdown',
+        sort: true,
+        setCellProps: () => ({style: columnStyle}),
+        setCellHeaderProps: () => ({ style: headingStyle }),
       }
      },
      {
@@ -179,36 +228,40 @@ const DeltaReport = (props) => {
       name: 'topMessage', 
       label: 'MHIRJ Known Message',
       options: {
-       filter: false,
-       sort: true,
-       setCellProps: () => ({style: {minWidth:'300px'}})
+        filter: false,
+        sort: true,
+        setCellProps: () => ({style: columnStyle}),
+        setCellHeaderProps: () => ({ style: headingStyle }),
       }
      },
      {
       name: 'honey', 
       label: 'Mel or No-Dispatch',
       options: {
-       filter: false,
-       sort: true,
-       setCellProps: () => ({style: {minWidth:'200px'}})
+        filter: false,
+        sort: true,
+        setCellProps: () => ({style: columnStyle}),
+        setCellHeaderProps: () => ({ style: headingStyle }),
       }
      },
      {
       name: 'input', 
       label: 'MHIRJ Input',
       options: {
-       filter: false,
-       sort: true,
-       setCellProps: () => ({style: {minWidth:'400px'}})
+        filter: false,
+        sort: true,
+        setCellProps: () => ({style: columnStyle}),
+        setCellHeaderProps: () => ({ style: headingStyle }),
       }
      },
      {
       name: 'recommendation', 
       label: 'MHIRJ Recommended Action',
       options: {
-       filter: false,
-       sort: true,
-       setCellProps: () => ({style: {minWidth:'400px'}})
+        filter: false,
+        sort: true,
+        setCellProps: () => ({style: columnStyle}),
+        setCellHeaderProps: () => ({ style: headingStyle }),
       }
      },
      {
@@ -217,7 +270,8 @@ const DeltaReport = (props) => {
       options: {
        filter: false,
        sort: true,
-       setCellProps: () => ({style: {minWidth:'400px'}})
+       setCellProps: () => ({style: columnStyle}),
+        setCellHeaderProps: () => ({ style: headingStyle }),
       }
      },
      {
@@ -319,10 +373,26 @@ const DeltaReport = (props) => {
       fixedHeader: true,
       fixedSelectColumn: true,
       jumpToPage: true,
-      resizableColumns: false,
+      resizableColumns: true,
+      expandableRowsHeader: false,
       downloadOptions: {
         filename: 'Delta Report.csv',
         separator: ',',
+      },
+      expandableRows: true,
+      renderExpandableRow: (rowData, rowMeta) => {
+        return (    
+        <TableRow>
+          <TableCell colSpan={rowData.length+1}>
+            <CorrelationAnalysisTable
+              dateFrom = {deltaParameters.deltaFrom}
+              dateTo = {deltaParameters.deltaTo}
+              tail = {rowData[0]}
+              EqID = {rowData[6]}
+            />
+            </TableCell>
+        </TableRow>
+        );
       },
       setRowProps: (row, index) => {
         if (row[22] === true) {
@@ -343,7 +413,9 @@ const DeltaReport = (props) => {
       },
       textLabels: {
         body: {
-            noMatch: props.loading ? 'Please wait, loading data ...' : "Sorry, there is no matching data to display"
+            noMatch: props.loading ? 'Please wait, loading data ...' : "Sorry, there is no matching data to display",
+            toolTip: "Sort",
+            columnHeaderTooltip: column => column.secondaryLabel ? `Sort for ${column.secondaryLabel}` : "Sort"
         },
     },
       elevation: 4,

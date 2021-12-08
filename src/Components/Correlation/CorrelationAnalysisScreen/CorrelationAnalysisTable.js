@@ -48,7 +48,7 @@ const CorrelationAnalysisTable = (props) => {
         filter: true,
         filterType: 'dropdown',
         sort: true,
-        setCellProps: () => ({style: {minWidth:'150px'}})
+        setCellProps: () => ({style: {width:'120px'}})
       }
     },
     // {
@@ -68,7 +68,7 @@ const CorrelationAnalysisTable = (props) => {
         filter: true,
         filterType: 'dropdown',
         sort: true,
-        setCellProps: () => ({style: {minWidth:'400px'}})
+        setCellProps: () => ({style: {width:'250px'}})
       }
     },
     {
@@ -78,7 +78,7 @@ const CorrelationAnalysisTable = (props) => {
         filter: true,
         filterType: 'dropdown',
         sort: true,
-        setCellProps: () => ({style: {minWidth:'400px'}})
+        setCellProps: () => ({style: {width:'400px'}})
       }
     },
     {
@@ -88,7 +88,7 @@ const CorrelationAnalysisTable = (props) => {
         filter: true,
         filterType: 'dropdown',
         sort: true,
-        setCellProps: () => ({style: {minWidth:'150px'}})
+        setCellProps: () => ({style: {width:'150px'}})
       }
     },
     {
@@ -98,7 +98,7 @@ const CorrelationAnalysisTable = (props) => {
         filter: true,
         filterType: 'dropdown',
         sort: true,
-        setCellProps: () => ({style: {minWidth:'300px'}})
+        setCellProps: () => ({style: {width:'300px'}})
       }
     },
     {
@@ -108,7 +108,7 @@ const CorrelationAnalysisTable = (props) => {
         filter: true,
         filterType: 'dropdown',
         sort: true,
-        setCellProps: () => ({style: {minWidth:'200px'}})
+        setCellProps: () => ({style: {width:'180px'}})
       }
     },
     {
@@ -118,7 +118,7 @@ const CorrelationAnalysisTable = (props) => {
         filter: true,
         filterType: 'dropdown',
         sort: true,
-        setCellProps: () => ({style: {minWidth:'300px'}})
+        setCellProps: () => ({style: {width:'250px'}})
       }
     },
   ];
@@ -166,7 +166,7 @@ const options = {
         noMatch: loading ? 'Please wait, loading data ...' : "Sorry, there is no matching data to display"
     },
   },
-  elevation: 0,
+  elevation: 1,
   rowsPerPage: 10,
   rowsPerPageOptions: [10,20,50],
   selectToolbarPlacement:"none",

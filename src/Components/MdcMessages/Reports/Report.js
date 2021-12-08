@@ -80,6 +80,8 @@ const Report = (props) => {
           setDeltaData([]);
           setLoadingDelta(true);
 
+          console.log(path);
+          
           axios.post(path).then(function (res){
             var data = JSON.parse(res.data);
             setDeltaData(data);    
@@ -171,6 +173,8 @@ const Report = (props) => {
       jamParameters.eqID + '/'+ jamParameters.operator + '/' + jamParameters.messages + '/' + jamParameters.fromDate + '/' + 
       jamParameters.toDate + '/' + jamACSNValue;
       
+      console.log(jamsPath);
+
       axios.post(jamsPath).then(function (res){
         var data = JSON.parse(res.data);
         setJamHistoryData(data);

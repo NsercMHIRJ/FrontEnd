@@ -161,31 +161,34 @@ const DailyReport = (props) => {
       name: 'totalOccurences', 
       label: 'Occ',
       options: {
-       filter: false,
+        filter: false,
         filterType: 'dropdown',
         sort: true,
+        secondaryLabel: 'Total Occurences',
         setCellProps: () => ({style: columnStyle}),
         setCellHeaderProps: () => ({ style: headingStyle }),
       }
      },
      {
       name: 'ConsecutiveFlights', 
-      label: 'Cons. Legs',
+      label: 'Cons. Legs', 
       options: {
-       filter: false,
+        filter: false,
         filterType: 'dropdown',
         sort: true,
+        secondaryLabel: 'Consecutive Flight Legs',
         setCellProps: () => ({style: columnStyle}),
         setCellHeaderProps: () => ({ style: headingStyle }),
       }
      },
      {
       name: 'intermittent', 
-      label: 'Int.',
+      label: 'Int.', 
       options: {
-       filter: false,
+        filter: false,
         filterType: 'dropdown',
         sort: true,
+        secondaryLabel: 'Intermittency',
         setCellProps: () => ({style: columnStyle}),
         setCellHeaderProps: () => ({ style: headingStyle }),
       }
@@ -331,7 +334,6 @@ const DailyReport = (props) => {
       selectableRowsOnClick: false,
       expandableRows: true,
       onCellClick: (colData, cellMeta) => {
-        console.log("click");
         setIsDefault(!isDefault);
         AddCellClass(cellMeta.rowIndex);
       },

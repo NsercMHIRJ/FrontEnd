@@ -78,7 +78,7 @@ const CorrelationAnalysisTable = (props) => {
         filter: true,
         filterType: 'dropdown',
         sort: true,
-        setCellProps: () => ({style: {width:'400px'}})
+        setCellProps: () => ({style: {width:'500px'}})
       }
     },
     {

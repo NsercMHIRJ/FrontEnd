@@ -60,6 +60,9 @@
 .reports-root {
   .MuiTableBody-root tr.MuiTableRow-root.MuiTableRow-hover td.MuiTableCell-root {
     border-right: 1px solid lightgray;
+    &:last-of-type {
+      border-right: none;
+    }
     cursor: default;
     div {
       cursor: default;
@@ -75,28 +78,20 @@
       text-overflow: ellipsis;
     }
   }
-  .correlation-analysis-subtable .MuiTableBody-root tr.MuiTableRow-root.MuiTableRow-hover:not(.correlation-analysis-subtable) td.MuiTableCell-root {
+  .analysis-correlation .MuiTableBody-root td.MuiTableCell-root.MuiTableCell-body {
     div {
-      white-space: normal;
+      white-space: normal !important;
     }
   }
-  // .MuiTableRow-root.correlation-analysis-subtable {
-  //   .MuiTableCell-root.MuiTableCell-body {
-  //     padding-top: 0 !important;
-  //   }
-  //   .reports-root.analysis-correlation {
-  //     thead {
-  //       border-right: 1px solid lightgray;
-  //     }
-  //     .MuiToolbar-root {
-  //       border-right: 2px solid lightgray;
-  //     }
-  //   }
-  //     tfoot.MuiTableFooter-root .MuiTableRow-footer td.MuiTableCell-footer {
-  //       padding-right: 0px;
-  //     }
-  //   }
-  // }
+
+  .MuiTableBody-root {
+    border-collapse: unset;
+  }
+
+  .MuiTableCell-root[class*="MUIDataTableSelectCell-"]{
+    background-color: white;
+  }
+
   .MuiTableBody-root {
     .MuiTableRow-root {
       .MuiTableCell-root {

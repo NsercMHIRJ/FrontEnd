@@ -38,7 +38,7 @@ export default function Chart2() {
 
 
   function save(e) {
-    //save to png
+    
     const canvasSave = document.getElementById('chart2');
     canvasSave.toBlob(function (blob) {
       saveAs(blob, "Chart2.png")

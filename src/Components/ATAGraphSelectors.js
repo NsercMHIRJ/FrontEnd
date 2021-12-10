@@ -140,7 +140,7 @@ export const EqIDSelector = (props) => {
 
   const handleEqIDChange = (event, values) => {
     var copy = [];
-    //Analysis inputs, as soon as one ATA under “ATA Main” is selected the “ALL” should de-select. 
+    
     if(Object.values(values)[0] === "NONE" && EqID.length !== 0){
       copy.push(Object.values(values)[1]);
       setEqID(copy);

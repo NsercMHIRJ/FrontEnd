@@ -81,7 +81,7 @@ const DailyReport = (props) => {
       }
     },
     {
-      name: 'EICASMessages', 
+      name: 'EICASRelated', 
       label: 'EICAS Related',
       options: {
        filter: true,

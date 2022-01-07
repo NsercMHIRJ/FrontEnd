@@ -41,7 +41,7 @@ const DeltaReport = (props) => {
         filter: true,
         filterType: 'dropdown',
         sort: true,
-        setCellProps: () => ({style: columnStyle}),
+        setCellProps: () => ({ style: columnStyle }),
         setCellHeaderProps: () => ({ style: headingStyle }),
       }
     },
@@ -52,7 +52,7 @@ const DeltaReport = (props) => {
         filter: true,
         filterType: 'dropdown',
         sort: true,
-        setCellProps: () => ({style: columnStyle}),
+        setCellProps: () => ({ style: columnStyle }),
         setCellHeaderProps: () => ({ style: headingStyle }),
       }
     },
@@ -63,21 +63,21 @@ const DeltaReport = (props) => {
         filter: true,
         filterType: 'dropdown',
         sort: true,
-        setCellProps: () => ({style: columnStyle}),
+        setCellProps: () => ({ style: columnStyle }),
         setCellHeaderProps: () => ({ style: headingStyle }),
       }
     },
-    {
-      name: 'mdcMessages', 
-      label: 'MDC Messages',
-      options: {
-        filter: true,
-        filterType: 'dropdown',
-        sort: true,
-        setCellProps: () => ({style: columnStyle}),
-        setCellHeaderProps: () => ({ style: headingStyle }),
-      }
-    },
+    // {
+    //   name: 'mdcMessages', 
+    //   label: 'MDC Messages',
+    //   options: {
+    //     filter: true,
+    //     filterType: 'dropdown',
+    //     sort: true,
+    //     setCellProps: () => ({style: columnStyle}),
+    //     setCellHeaderProps: () => ({ style: headingStyle }),
+    //   }
+    // },
     {
       name: 'LRU', 
       label: 'LRU',
@@ -85,7 +85,7 @@ const DeltaReport = (props) => {
         filter: true,
         filterType: 'dropdown',
         sort: true,
-        setCellProps: () => ({style: columnStyle}),
+        setCellProps: () => ({ style: columnStyle }),
         setCellHeaderProps: () => ({ style: headingStyle }),
       }
     },
@@ -96,7 +96,7 @@ const DeltaReport = (props) => {
         filter: true,
         filterType: 'dropdown',
         sort: true,
-        setCellProps: () => ({style: columnStyle}),
+        setCellProps: () => ({ style: columnStyle }),
         setCellHeaderProps: () => ({ style: headingStyle }),
       }
     },
@@ -107,7 +107,7 @@ const DeltaReport = (props) => {
         filter: true,
         filterType: 'dropdown',
         sort: true,
-        setCellProps: () => ({style: columnStyle}),
+        setCellProps: () => ({ style: columnStyle }),
         setCellHeaderProps: () => ({ style: headingStyle }),
       }
     },
@@ -118,7 +118,7 @@ const DeltaReport = (props) => {
         filter: true,
         filterType: 'dropdown',
         sort: true,
-        setCellProps: () => ({style: columnStyle}),
+        setCellProps: () => ({ style: columnStyle }),
         setCellHeaderProps: () => ({ style: headingStyle }),
       }
     },
@@ -129,7 +129,7 @@ const DeltaReport = (props) => {
         filter: false,
         filterType: 'dropdown',
         sort: true,
-        setCellProps: () => ({style: columnStyle}),
+        setCellProps: () => ({ style: columnStyle }),
         setCellHeaderProps: () => ({ style: headingStyle }),
       }
      },
@@ -141,7 +141,13 @@ const DeltaReport = (props) => {
         filterType: 'dropdown',
         sort: true,
         secondaryLabel: 'Total Occurences',
-        setCellProps: () => ({style: columnStyle}),
+        setCellProps: (row , index) => {
+          if( data[index].Total_occurrences_color ) {
+            return { style: { ...columnStyle, background: data[index].Total_occurrences_color } }
+          } else {
+            return { style: columnStyle }
+          }
+        },
         setCellHeaderProps: () => ({ style: headingStyle }),
       }
      },
@@ -153,7 +159,13 @@ const DeltaReport = (props) => {
         filterType: 'dropdown',
         sort: true,
         secondaryLabel: 'Consecutive Days',
-        setCellProps: () => ({style: columnStyle}),
+        setCellProps: (row , index) => {
+          if(data[index].Consecutive_days_color) {
+            return { style: { ...columnStyle, background: data[index].Consecutive_days_color } }
+          } else {
+            return { style: columnStyle }
+          }
+        },
         setCellHeaderProps: () => ({ style: headingStyle }),
       }
      },
@@ -165,7 +177,13 @@ const DeltaReport = (props) => {
         filterType: 'dropdown',
         sort: true,
         secondaryLabel: 'Consecutive Flight Legs',
-        setCellProps: () => ({style: columnStyle}),
+        setCellProps: (row , index) => {
+          if(data[index].Consecutive_FL_color) {
+            return { style: {  ...columnStyle, background: data[index].Consecutive_FL_color } }
+          } else {
+            return { style: columnStyle }
+          }
+        },
         setCellHeaderProps: () => ({ style: headingStyle }),
       }
      },
@@ -177,7 +195,13 @@ const DeltaReport = (props) => {
         filterType: 'dropdown',
         sort: true,
         secondaryLabel: 'Intermittency',
-        setCellProps: () => ({style: columnStyle}),
+        setCellProps: (row , index) => {
+          if(data[index].Intermittent_color) {
+            return { style: {...columnStyle, background: data[index].Intermittent_color } }
+          } else {
+            return { style: columnStyle }
+          }
+        },
         setCellHeaderProps: () => ({ style: headingStyle }),
       }
      },
@@ -229,7 +253,7 @@ const DeltaReport = (props) => {
       options: {
         filter: false,
         sort: true,
-        setCellProps: () => ({style: columnStyle}),
+        setCellProps: () => ({ style: columnStyle }),
         setCellHeaderProps: () => ({ style: headingStyle }),
       }
      },
@@ -239,7 +263,7 @@ const DeltaReport = (props) => {
       options: {
         filter: false,
         sort: true,
-        setCellProps: () => ({style: columnStyle}),
+        setCellProps: () => ({ style: columnStyle }),
         setCellHeaderProps: () => ({ style: headingStyle }),
       }
      },
@@ -295,24 +319,6 @@ const DeltaReport = (props) => {
       }
      },
      {
-      name: 'isDarkOrange', 
-      label: 'isDarkOrange',
-      options: {
-       filter: false,
-       sort: true,
-       display: false,
-      }
-     },
-     {
-      name: 'isDarkRed', 
-      label: 'isDarkRed',
-      options: {
-       filter: false,
-       sort: false,
-       display: false,
-      }
-     },
-     {
       name: 'isJam', 
       label: 'Jam',
       options: {
@@ -325,24 +331,6 @@ const DeltaReport = (props) => {
        display: false,
       }
      },
-     {
-      name: 'isLightOrange', 
-      label: 'isLightOrange',
-      options: {
-       filter: false,
-       sort: false,
-       display: false,
-      }
-     },
-     {
-      name: 'isLightRed', 
-      label: 'isLightRed',
-      options: {
-       filter: false,
-       sort: false,
-       display: false,
-      }
-     },
     ];
 
     let data = [];
@@ -350,33 +338,34 @@ const DeltaReport = (props) => {
     props.data?.map((item => {
       data.push(
         {
-          ACSN: item["AC SN"], 
+          ACSN: item["AC SN"],
           tail: item["Tail#"],
-          EICASMessages: item["EICAS Message"], 
-          mdcMessages: item["MDC Message"],  
-          LRU: item["LRU"],  
-          ATA: item["ATA"],  
-          B1Equation: item["B1-Equation"],  
-          type: item["Type"],   
-          equationDescription: item["Equation Description"],   
-          totalOccurences: item["Total Occurences"],  
-          consecutiveDays: item["Consective Days"],
-          ConsecutiveFlights: item["Consecutive FL"],  
-          intermittent: item["Intermittent"],  
-          reasons: item["Reason(s) for flag"],   
-          priority: item["Priority"],   
-          topMessage: item["Known Top Message - Recommended Documents"],  
-          recommendation: item["MHIRJ ISE Recommendation"], 
-          comments: item["Additional Comments"],  
-          input: item["MHIRJ ISE Input"],  
-          isJam: item["is_jam"],
-          isDarkOrange: item["is_dark_orange"],
-          isDarkRed: item["is_dark_red"],
-          isLightOrange: item["is_light_orange"],
-          isLightRed: item["is_light_red"],
-          honey: "",
-          dateFrom: "",
-          dateTo: "",
+          EICASMessages: item["EICAS Message"],
+          // mdcMessages: item["MDC Message"],
+          LRU: item["LRU"],
+          ATA: item["ATA"],
+          B1Equation: item["B1-Equation"],
+          type: item["Type"],
+          equationDescription: item["Equation Description"],
+          totalOccurences: item["Total Occurrences"],
+          consecutiveDays: item["Consecutive Days"],
+          ConsecutiveFlights: item["Consecutive FL"],
+          intermittent: item["INTERMITNT"],
+          reasons: item["Reason(s) for flag"],
+          priority: item["Priority"],
+          topMessage: item["MHIRJ Known Message"],
+          recommendation: item["MHIRJ Recommended Action"],
+          comments: item["MHIRJ Additional Comment"],
+          input: item["MHIRJ Input"],
+          isJam: item["Jam"],
+          background: item["backgroundcolor"],
+          Total_occurrences_color: item["Total Occurrences Col"],
+          Consecutive_days_color: item["Consecutive Days Col"],
+          Consecutive_FL_color: item["Consecutive FL Col"],
+          Intermittent_color: item["INTERMITNT Col"],
+          // honey: "",
+          dateFrom: item["Date From"],
+          dateTo: item["Date To"],
         }
       );
       return data;

@@ -140,7 +140,9 @@ export const EqIDSelector = (props) => {
         var data = JSON.parse(res.data);
         let EQArray = ['NONE'];
         Object.values(data).map((item=>{
-          EQArray.push(item.EQ_ID.toString());
+          if (item.EQ_ID) {
+            EQArray.push(item.EQ_ID.toString());
+          }
         }))
         setEqIDList(EQArray);
       });
